@@ -36,25 +36,13 @@ function merge(array1, array2){
   return combinedArr;
 }
 
-//merge([2,4,9],[1,3,5,7]);
-
-/* Base case: Every array is one element
- * Otherwise, split and call mergeSort on the two halves
- * Merge the halves into a sorted array
- */
-
-let finalArr = [];
 function mergeSort(array) {
   let halves = null;
-  //let finalArr = [];
 
-  if (array.length === 1) {
-    finalArr.push(array[0]);
-  } else if (array.length > 1) {
-    halves = split(array);
-    mergeSort(halves[0]);
-    mergeSort(halves[1]);
+  if (array.length <= 1) {
+    return array;
   }
+  halves = split(array);
+  return merge(mergeSort(halves[0]), mergeSort(halves[1]));
 
-  return finalArr;
 }
