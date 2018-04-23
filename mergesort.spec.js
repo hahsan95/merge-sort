@@ -32,3 +32,20 @@ describe('Merge function', function(){
     expect(merge([2],[1])).toEqual([1,2]);
   });
 });
+
+describe('MergeSort function', function(){
+  let testArr = [9,5,2,1,7,8,11];
+  beforeEach(function () {
+    spyOn(window, 'mergeSort').and.callThrough();
+  });
+
+  it('is able to sort an array', function () {
+    expect(mergeSort(testArr)).toEqual([1,2,5,7,8,9,11]);
+  });
+
+  it('sorts an array recursively', function () {
+    mergeSort(testArr);
+    expect(window.mergeSort.calls.count()).toBeGreaterThan(1);
+  });
+
+});
